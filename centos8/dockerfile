@@ -1,0 +1,6 @@
+FROM centos:8.2.2004
+RUN dnf install -y 'dnf-command(config-manager)' && dnf config-manager --set-enabled PowerTools
+RUN dnf install -y python3-devel python3 make gcc openssl-devel pcre-devel systemd-devel rpm-build rpmdevtools libcurl-devel expat-devel expat gettext asciidoc xmlto texi2html texinfo texinfo-tex docbook2X curl-devel gettext-devel openssl-devel  perl-CPAN perl-devel zlib-devel
+RUN ln -s /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi
+RUN mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SRPMS}
+RUN echo "%_topdir    /root/rpmbuild" > ~/.rpmmacros
