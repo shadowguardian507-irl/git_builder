@@ -1,0 +1,6 @@
+FROM centos:7.6.1810
+RUN yum install -y epel-release
+RUN yum install -y python3-devel python3 make gcc openssl-devel pcre-devel systemd-devel rpm-build rpmdevtools libcurl-devel libcurl expat-devel expat expectk gettext asciidoc xmlto texi2html texinfo texinfo-tex docbook2X
+RUN ln -sf /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi
+RUN mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SRPMS}
+RUN echo "%_topdir    /root/rpmbuild" > ~/.rpmmacros
